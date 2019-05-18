@@ -11,22 +11,17 @@ import { MessagesComponent } from './messages/messages.component';
 import './styles.css';
 
 @NgModule({
-  id: 'AppModule',
-  imports: [
-    AppRoutingModule
-  ],
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent,
-    HeroSearchComponent
-  ],
-  providers: [
-    HeroService,
-    MessageService,
-  ],
-  bootstrap: [ AppComponent ]
+    id: 'AppModule',
+    imports: [AppRoutingModule],
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        HeroesComponent,
+        HeroDetailComponent,
+        MessagesComponent,
+        HeroSearchComponent
+    ],
+    providers: [HeroService, MessageService],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

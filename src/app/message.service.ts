@@ -2,13 +2,13 @@ import { Injectable } from 'angular-ts-decorators';
 
 @Injectable('messageService')
 export class MessageService {
-  messages: string[] = [];
+    messages: string[] = [];
 
-  add(message: string) {
-    this.messages.unshift(message);
-  }
+    add(message: string) {
+        this.messages.unshift(message);
+    }
 
-  clear() {
-    this.messages = [];
-  }
+    clear() {
+        this.messages = [];
+    }
 }

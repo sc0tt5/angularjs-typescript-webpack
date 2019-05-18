@@ -31,7 +31,6 @@ module.exports = function (config) {
       fixWebpackSourcePaths: true
     },
     files: [
-      'node_modules/jquery/dist/jquery.js',
       'src/test.ts'
       // 'src/**/*.spec.ts'
     ],
