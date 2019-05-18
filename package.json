@@ -5,10 +5,10 @@
   "repository": "https://github.com/vsternbach/angularjs-typescript-webpack",
   "license": "MIT",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack -p",
-    "build:dev": "npm run clean && cross-env NODE_ENV=development webpack -p && webpack-dev-server --open --hot",
+    "build": "webpack -p --mode production",
+    "build:dev": "npm run clean && webpack && webpack-dev-server --mode development --inline --hot --open",
     "build:production": "npm run clean && npm run build",
-    "clean": "rimraf build",
+    "clean": "rimraf build & copyfiles -f src/assets/* build/",
     "start": "npm run build:dev",
     "test": "karma start ./karma.conf.js"
   },

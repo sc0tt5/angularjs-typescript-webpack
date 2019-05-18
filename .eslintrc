@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jasmine": true
+    },
+    "globals": {
+        "angular": false,
+        "describe": false,
+        "it": false,
+        "expect": false,
+        "beforeEach": false,
+        "afterEach": false,
+        "module": false,
+        "inject": false
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "quotes": ["error", "single"],
+        "semi": 1
+    }
+}

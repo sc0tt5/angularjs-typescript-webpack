@@ -1,4 +1,5 @@
 import { NgModule } from 'angular-ts-decorators';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
