@@ -1,6 +1,6 @@
 import { NgModule } from 'angular-ts-decorators';
 import { MessagesComponent } from './messages/messages.component';
-import { MessageService } from '../message.service';
+import { MessageService } from '../store/services/message.service';
 
 @NgModule({
     id: 'CoreModule',

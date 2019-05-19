@@ -1,5 +1,5 @@
 import { NgModule } from 'angular-ts-decorators';
-import { HeroService } from './../hero.service';
+import { HeroService } from '../store/services/hero.service';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';

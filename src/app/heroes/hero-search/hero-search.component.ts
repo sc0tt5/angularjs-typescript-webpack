@@ -1,6 +1,6 @@
 import { Component } from 'angular-ts-decorators';
 import { Hero } from '../../core/model/hero';
-import { HeroService } from '../../hero.service';
+import { HeroService } from '../../store/services/hero.service';
 
 @Component({
     selector: 'app-hero-search',

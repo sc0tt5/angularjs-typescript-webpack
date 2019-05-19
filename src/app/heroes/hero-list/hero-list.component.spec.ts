@@ -1,6 +1,6 @@
 import { Component } from 'angular-ts-decorators';
 import { ComponentFixture, TestBed } from 'angularjs-testbed';
-import { HEROES } from '../../mock-heroes';
+import { HEROES } from '../../../assets/mock-heroes';
 import { HeroListComponent } from './hero-list.component';
 
 @Component({ selector: 'app-hero-search', template: '' })
