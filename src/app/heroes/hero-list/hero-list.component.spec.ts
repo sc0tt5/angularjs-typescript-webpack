@@ -1,14 +1,14 @@
 import { Component } from 'angular-ts-decorators';
 import { ComponentFixture, TestBed } from 'angularjs-testbed';
-import { HEROES } from '../mock-heroes';
-import { DashboardComponent } from './dashboard.component';
+import { HEROES } from '../../mock-heroes';
+import { HeroListComponent } from './hero-list.component';
 
 @Component({ selector: 'app-hero-search', template: '' })
 export class HeroSearchComponent {}
 
-describe('DashboardComponent', () => {
-    let component: DashboardComponent;
-    let fixture: ComponentFixture<DashboardComponent>;
+describe('HeroListComponent', () => {
+    let component: HeroListComponent;
+    let fixture: ComponentFixture<HeroListComponent>;
     let heroService;
     let getHeroesSpy;
 
@@ -16,13 +16,13 @@ describe('DashboardComponent', () => {
         heroService = jasmine.createSpyObj('heroService', ['getHeroes']);
         getHeroesSpy = heroService.getHeroes.and.returnValue(Promise.resolve(HEROES));
         TestBed.configureTestingModule({
-            declarations: [DashboardComponent, HeroSearchComponent],
+            declarations: [HeroListComponent, HeroSearchComponent],
             providers: [{ provide: 'heroService', useValue: heroService }]
         }).compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DashboardComponent);
+        fixture = TestBed.createComponent(HeroListComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

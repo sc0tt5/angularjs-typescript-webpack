@@ -1,13 +1,13 @@
 import { Component, OnInit } from 'angular-ts-decorators';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../../core/model/hero';
+import { HeroService } from '../../hero.service';
 
 @Component({
-    selector: 'app-dashboard',
-    template: require('./dashboard.component.html'),
-    styles: [require('./dashboard.component.scss')]
+    selector: 'app-hero-list',
+    template: require('./hero-list.component.html'),
+    styles: [require('./hero-list.component.scss')]
 })
-export class DashboardComponent implements OnInit {
+export class HeroListComponent implements OnInit {
     heroes: Hero[] = [];
 
     /*@ngInject*/

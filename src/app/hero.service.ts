@@ -1,6 +1,6 @@
 import { IHttpService, IPromise, IQService } from 'angular';
 import { Injectable } from 'angular-ts-decorators';
-import { Hero } from './hero';
+import { Hero } from './core/model/hero';
 import { MessageService } from './message.service';
 
 @Injectable('heroService')

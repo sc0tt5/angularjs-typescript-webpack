@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from 'angularjs-testbed';
-import { MessageService } from '../message.service';
+import { MessageService } from './../../message.service';
 import { MessagesComponent } from './messages.component';
 
 describe('MessagesComponent', () => {

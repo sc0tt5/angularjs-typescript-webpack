@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from 'angularjs-testbed';
-import { HEROES } from '../mock-heroes';
+import { HEROES } from '../../mock-heroes';
 import { HeroSearchComponent } from './hero-search.component';
 
 describe('HeroSearchComponent', () => {
