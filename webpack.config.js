@@ -42,7 +42,7 @@ module.exports = (env, argv) => {
                     }
                 },
                 {
-                    loader: 'ts-loader',
+                    loader: 'awesome-typescript-loader',
                     options: {
                         configFile: `${sourcePath}/tsconfig.app.json`,
                         // disable type checker - we will use it in fork plugin
