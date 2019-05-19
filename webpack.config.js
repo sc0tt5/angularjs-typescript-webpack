@@ -74,10 +74,10 @@ module.exports = (env, argv) => {
 
     if (isProd) {
         plugins.push(
-            /* new webpack.NormalModuleReplacementPlugin(
-          /\/environments\/environment\.ts/,
-          `${sourcePath}/environments/environment.prod.ts`
-      ), */
+            new webpack.NormalModuleReplacementPlugin(
+                /\/environments\/environment\.ts/,
+                `${sourcePath}/environments/environment.prod.ts`
+            ),
             new webpack.LoaderOptionsPlugin({
                 minimize: true,
                 debug: false
@@ -85,8 +85,8 @@ module.exports = (env, argv) => {
         );
     } else {
         plugins.push(
-            new webpack.NamedModulesPlugin()
-            // new webpack.HotModuleReplacementPlugin()
+            new webpack.NamedModulesPlugin(),
+            new webpack.HotModuleReplacementPlugin()
         );
     }
 
