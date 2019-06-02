@@ -1,12 +1,16 @@
 import { IHttpService, IPromise, IQService } from 'angular';
 import { Injectable } from 'angular-ts-decorators';
+import { Observable } from 'rxjs/internal/Observable';
+import { from } from 'rxjs/internal/observable/from';
+import { throwError } from 'rxjs/internal/observable/throwError';
+// import { from, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Hero } from '../../core/model/hero';
 import { MessageService } from './message.service';
 
 @Injectable('heroService')
 export class HeroService {
     private heroes: Hero[] = [];
-
     private heroesUrl = 'heroes.json'; // URL to web api
 
     /*@ngInject*/
@@ -16,7 +20,12 @@ export class HeroService {
         private messageService: MessageService
     ) {}
 
-    /** GET heroes from the server */
+    // GET heroes from the server
+    /* getHeroes(): Observable<Hero[]> {
+    return from(this.$http.get<Hero[]>(this.heroesUrl))
+      .pipe(map(heroes => heroes.data))
+      .pipe(catchError((error: any) => throwError(error.json())));
+  } */
     getHeroes(): IPromise<Hero[]> {
         const deferred = this.$q.defer<Hero[]>();
         if (this.heroes.length) {
@@ -37,7 +46,7 @@ export class HeroService {
         return deferred.promise;
     }
 
-    /** GET hero by id */
+    // GET hero by id
     getHero(id: number): IPromise<Hero> {
         const deferred = this.$q.defer<Hero>();
         const hero = this.heroes.find(h => h.id === id);
@@ -52,7 +61,7 @@ export class HeroService {
         return deferred.promise;
     }
 
-    /* GET heroes whose name contains search term */
+    //  GET heroes whose name contains search term
     searchHeroes(term: string): IPromise<Hero[]> {
         const deferred = this.$q.defer<Hero[]>();
         const error = `no heroes with name that contains ${term}`;
@@ -67,9 +76,7 @@ export class HeroService {
         return deferred.promise;
     }
 
-    //////// Save methods //////////
-
-    /** POST: add a new hero to the server */
+    // POST: add a new hero to the server
     addHero(name: string): IPromise<Hero> {
         const deferred = this.$q.defer<Hero>();
         const hero = { name, id: this.getNewId() };
@@ -77,10 +84,9 @@ export class HeroService {
         this.log('added new hero');
         deferred.resolve(hero);
         return deferred.promise;
-        // return this.$http.post<Hero>(this.heroesUrl, hero);
     }
 
-    /** DELETE: delete the hero from the server */
+    // DELETE: delete the hero from the server
     deleteHero(hero: Hero | number): IPromise<boolean> {
         const deferred = this.$q.defer<boolean>();
         const id = typeof hero === 'number' ? hero : hero.id;
@@ -95,10 +101,9 @@ export class HeroService {
             deferred.reject(error);
         }
         return deferred.promise;
-        // return this.$http.delete<Hero>(url);
     }
 
-    /** PUT: update the hero on the server */
+    // PUT: update the hero on the server
     updateHero(hero: Hero): IPromise<any> {
         const deferred = this.$q.defer<Hero>();
         const index = this.heroes.findIndex(h => h.id === hero.id);
@@ -112,30 +117,9 @@ export class HeroService {
             deferred.reject(error);
         }
         return deferred.promise;
-        // return this.$http.put(this.heroesUrl, hero);
     }
 
-    /**
-     * Handle Http operation that failed.
-     * Let the app continue.
-     * @param operation - name of the operation that failed
-     * @param result - optional value to return as the observable result
-     */
-    // private handleError<T> (operation = 'operation', result?: T) {
-    //   return (error: any): Observable<T> => {
-    //
-    //     // TODO: send the error to remote logging infrastructure
-    //     console.error(error); // log to console instead
-    //
-    //     // TODO: better job of transforming error for user consumption
-    //     this.log(`${operation} failed: ${error.message}`);
-    //
-    //     // Let the app keep running by returning an empty result.
-    //     return of(result as T);
-    //   };
-    // }
-
-    /** Log a HeroService message with the MessageService */
+    // Log a HeroService message with the MessageService
     private log(message: string) {
         this.messageService.add(`HeroService: ${message}`);
     }

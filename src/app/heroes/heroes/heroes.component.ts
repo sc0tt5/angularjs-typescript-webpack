@@ -1,5 +1,8 @@
 import { Component, OnInit } from 'angular-ts-decorators';
+import { Store } from 'redux';
+// import { from } from 'rxjs/internal/observable/from';
 import { Hero } from '../../core/model/hero';
+import * as fromStore from '../../store';
 import { HeroService } from '../../store/services/hero.service';
 
 @Component({
@@ -9,6 +12,8 @@ import { HeroService } from '../../store/services/hero.service';
 })
 export class HeroesComponent implements OnInit {
     heroes: Hero[];
+    store: Store<fromStore.HeroesState>;
+    selectors: fromStore.HeroesSelectors;
 
     /*@ngInject*/
     constructor(private heroService: HeroService) {}
@@ -19,6 +24,7 @@ export class HeroesComponent implements OnInit {
 
     getHeroes(): void {
         this.heroService.getHeroes().then(heroes => (this.heroes = heroes));
+        // from(this.selectors.getAllHeroes(this.store.getState()));
     }
 
     add(name: string): void {

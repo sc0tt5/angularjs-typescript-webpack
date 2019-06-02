@@ -12,3 +12,5 @@ export interface HeroesState {
 export const reducers = {
     heroes: fromHeroes.reducer
 };
+
+export const getHeroesState = state => state.heroes;

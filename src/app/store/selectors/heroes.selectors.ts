@@ -1,23 +1,28 @@
-/* import { createSelector } from 'reselect';
-
-import * as fromRoot from '../../../app/store';
-// import * as fromFeature from '../reducers';
+import { createSelector } from 'reselect';
+import * as fromFeature from '../reducers';
 import * as fromHeroes from '../reducers/heroes.reducer';
 
-import { Hero } from './../../core/model/hero';
+export class HeroesSelectors {
+    constructor() {}
 
-// heroes state */
-/* export const getHeroState = createSelector(
+    getHeroState = createSelector(
+        fromFeature.getHeroesState,
+        (state: fromFeature.HeroesState) => state.heroes
+    );
+
+    // heroes state */
+    /*export const getHeroState = createSelector(
     fromHeroes.getHeroesEntities,
     (state: fromHeroes. ..HeroesState) => state.heroes
-);
+);*/
 
-export const getHeroesEntities = createSelector(
-    getHeroState,
-    fromHeroes.getHeroesEntities
-);
+    getHeroesEntities = createSelector(
+        this.getHeroState,
+        fromHeroes.getHeroesEntities
+    );
 
-export const getSelectedHero = createSelector(
+    /*
+getSelectedHero = createSelector(
     getHeroesEntities, // using feature state
     fromRoot.getRouterState, // using root state
     (entities, router): Hero => {
@@ -25,21 +30,26 @@ export const getSelectedHero = createSelector(
         return router.state && entities[router.state.params.heroId];
     }
 );
+*/
 
-export const getAllHeroes = createSelector(
-    getHeroesEntities,
-    entities => {
-        return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
-    }
-);
+    getAllHeroes = createSelector(
+        this.getHeroesEntities,
+        entities => {
+            return Object.keys(entities).map(id => entities[parseInt(id, 10)]);
+        }
+    );
 
-export const getHeroesLoaded = createSelector(
-    getHeroState,
-    fromHeroes.getHeroesLoaded
-);
+    getHeroesLoaded = createSelector(
+        this.getHeroState,
+        fromHeroes.getHeroesLoaded
+    );
 
-export const getHeroesLoading = createSelector(
-    getHeroState,
-    fromHeroes.getHeroesLoading
-);
- */
+    getHeroesLoading = createSelector(
+        this.getHeroState,
+        fromHeroes.getHeroesLoading
+    );
+
+    /* export function select(selector) {
+    return selector;
+} */
+}

@@ -1,8 +1,9 @@
-import { HeroState } from './heroes.reducer';
 import * as fromHeroes from '../actions/heroes.action';
 import { Hero } from './../../core/model/hero';
+import { HeroState } from './heroes.reducer';
 
 export interface HeroState {
+    // entities: { [id: number]: Hero };
     entities: { [id: number]: Hero };
     loaded: boolean;
     loading: boolean;
@@ -59,7 +60,7 @@ export function reducer(
         }
 
         // if update or create (first case will fall through)
-        case fromHeroes.UPDATE_HERO_SUCCESS:
+        /* case fromHeroes.UPDATE_HERO_SUCCESS:
         case fromHeroes.CREATE_HERO_SUCCESS: {
             const hero = action.payload;
             const entities = {
@@ -82,7 +83,7 @@ export function reducer(
                 ...state,
                 entities
             };
-        }
+        } */
     }
 
     return state;
